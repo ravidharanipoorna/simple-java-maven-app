@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<groupId>com.vip.vjtools</groupId>
+	<artifactId>vjtools</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+	<name>vjtools</name>
+	<packaging>pom</packaging>
+
+	<description>VJTools - VIP's core libraries and tools</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.locale>zh_CN</project.build.locale>
+		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+	</properties>
+
+	<modules>
+		<module>vjmap</module>
+		<module>vjtop</module>
+		<module>vjkit</module>
+	</modules>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-releases</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+	</distributionManagement>
+
+	<url>https://github.com/vipshop/vjtools</url>
+
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<!-- javadoc attach plugin -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<scm>
+		<connection>scm:git:https://github.com/vipshop/vjtools.git</connection>
+		<developerConnection>scm:git:https://github.com/vipshop/vjtools.git</developerConnection>
+		<url>https://github.com/vipshop/vjtools</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>calvin</id>
+			<name>Calvin Xiao</name>
+			<email>calvin.xiao at vipshop.com</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+		<developer>
+			<id>dehuizheng</id>
+			<name>Dehui Zheng</name>
+			<email>dehui.zheng at vipshop.com</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+</project>
